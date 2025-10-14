@@ -22,7 +22,11 @@ const app = express();
 //   credentials: true
 // }));
 const corsOptions = {
-  origin: 'http://localhost:3000', // frontend origin
+  // origin: 'http://localhost:3000', // frontend origin
+   origin: [
+    'https://sixteen-clothing-9hn8.vercel.app', // ✅ your live frontend
+    'http://localhost:3000' // ✅ for local testing
+  ],
   credentials: true,
   // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
   // allowedHeaders: ['Content-Type', 'Authorization']

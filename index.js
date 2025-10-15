@@ -28,9 +28,11 @@ const corsOptions = {
     'http://localhost:3000' // ✅ for local testing
   ],
   credentials: true,
-  // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
-  // allowedHeaders: ['Content-Type', 'Authorization']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
+
+
 
 app.use(cors(corsOptions)); // <== CORS middleware
 
@@ -57,7 +59,9 @@ app.use('/cart', cartRoutes);
 app.use('/products', productRoutes);
 app.use('/uploads', express.static('uploads'));
 
-
+app.get('/', (req, res) => {
+  res.send('Backend server is running successfully 🚀');
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

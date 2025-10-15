@@ -24,7 +24,7 @@ const app = express();
 const corsOptions = {
   // origin: 'http://localhost:3000', // frontend origin
    origin: [
-    'https://sixteen-clothing-9hn8.vercel.app', // ✅ your live frontend
+    'https://e-commerce-five-theta-10.vercel.app/', // ✅ your live frontend
     'http://localhost:3000' // ✅ for local testing
   ],
   credentials: true,

@@ -22,14 +22,15 @@ const app = express();
 //   credentials: true
 // }));
 const corsOptions = {
-  // origin: 'http://localhost:3000', // frontend origin
-   origin: [
+  origin: [
     'https://e-commerce-five-theta-10.vercel.app', // ✅ your live frontend
     'http://localhost:3000' // ✅ for local testing
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200, // ✅ for legacy browser support
+  preflightContinue: false   // ✅ to handle preflight requests properly
 };
 
 

@@ -97,7 +97,7 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    'https://sixteenclothing.vercel.app/login', // ✅ your live frontend
+    'https://sixteenclothing.vercel.app', // ✅ your live frontend
     'http://localhost:3000' // ✅ for local testing
   ],
   credentials: true,

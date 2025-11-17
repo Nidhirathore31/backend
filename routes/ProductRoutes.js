@@ -23,3 +23,6 @@ router.post('/add', upload.single('image'), addProduct);
 router.get('/', getProducts);
 
 module.exports = router;
+
+
+

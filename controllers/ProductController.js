@@ -49,6 +49,27 @@ exports.addProduct = async (req, res) => {
   }
 };
 
+exports.addProduct = async (req, res) => {
+  try {
+    const product = await Product.create({
+      title: req.body.title,
+      price: req.body.price,
+      description: req.body.description,
+      ratings: req.body.ratings,
+      image: req.file.path,      // CLOUDINARY URL
+      public_id: req.file.filename,
+    });
+
+    res.status(201).json({
+      message: "Product added successfully",
+      product,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 // Get all products
 exports.getProducts = async (req, res) => {
   try {

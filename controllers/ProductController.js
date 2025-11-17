@@ -30,27 +30,13 @@
 
 const Product = require('../models/Product');
 
-// Add Product with image
+// Add Product (Cloudinary)
 exports.addProduct = async (req, res) => {
   try {
-    const { title, price, description, ratings } = req.body;
-    const image = req.file?.path;
-
-    if (!image || !title || !price || !description || ratings == null) {
-      return res.status(400).json({ message: 'All fields including image are required' });
+    if (!req.file) {
+      return res.status(400).json({ message: "Image is required" });
     }
 
-    const newProduct = new Product({ image, title, price, description, ratings });
-    await newProduct.save();
-
-    res.status(201).json({ message: 'Product added successfully', product: newProduct });
-  } catch (error) {
-    res.status(500).json({ message: 'Something went wrong', error: error.message });
-  }
-};
-
-exports.addProduct = async (req, res) => {
-  try {
     const product = await Product.create({
       title: req.body.title,
       price: req.body.price,
@@ -65,10 +51,10 @@ exports.addProduct = async (req, res) => {
       product,
     });
   } catch (err) {
+    console.error("Error in addProduct:", err.message);
     res.status(500).json({ error: err.message });
   }
 };
-
 
 // Get all products
 exports.getProducts = async (req, res) => {

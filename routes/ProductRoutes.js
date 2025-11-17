@@ -16,13 +16,11 @@ const router = express.Router();
 const { addProduct, getProducts } = require('../controllers/ProductController');
 const upload = require('../middleware/upload');
 
-// POST /products/add (with multer upload)
 router.post('/add', upload.single('image'), addProduct);
-
-// GET /products
 router.get('/', getProducts);
 
 module.exports = router;
+
 
 
 
